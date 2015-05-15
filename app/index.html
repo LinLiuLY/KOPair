@@ -39,7 +39,7 @@
 
                 <!-- TOOL BODY -->
 
-                <div>
+                <div data-bind="with: person">
                     <h5>please add member for pair switch</h5>
 
                     <label>Name</label>
@@ -47,14 +47,15 @@
 
                     <label>Tyro</label>
                     <input type="checkbox" data-bind="checked: tyro">
-                    <button data-bind="click: addPerson">Add Member</button>
+                    <button data-bind="click: $parent.addPerson">Add Member</button>
                 </div>
 
                 <div>
                     <h5>members</h5>
-                    <ul data-bind="foreach: persons">
+                    <ul data-bind="foreach: personsList">
                         <li>
-                            <span data-bind="text: $data"></span>
+                            <span data-bind="text: name"></span>
+                            <span data-bind="text: tyro"></span>
                         </li>
                     </ul>                    
                 </div>

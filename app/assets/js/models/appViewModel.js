@@ -5,8 +5,9 @@ define(['jquery',
     'knockout',
     'underscore'
     '../../../assets/js/models/sammyViewModel.js',
+    '../../../assets/js/models/person.js',
     'knockout.validation'
-    ], function ($, ko, _, SammyViewModel) {
+    ], function ($, ko, _, SammyViewModel, Person) {
   return function () {
     var self = this;
 
@@ -19,23 +20,16 @@ define(['jquery',
       errorsAsTitle: false
     });
 
-    // Write your code.
-    // ...
-
-    self.name = ko.observable('1111');
-    self.tyro = ko.observable(false);
-
-    self.persons = ko.observableArray([]);
-
-    self.addPerson = function() {
-      console.log(ko.unwrap(self.name));
-      self.persons.push(ko.unwrap(self.name));
-    };
-
-    // Add submodels here
-    // Sammy view model for local navigation
     self.sammy = new SammyViewModel();
 
+    self.person = new Person('', false);
+    self.personsList = ko.observableArray([]);
+
+    self.addPerson = function(newPerson) {
+      var name = ko.unwrap(newPerson.name);
+      var tyro = ko.unwrap(newPerson.tyro);
+      self.personsList.push(new Person(name,tyro));
+    };
 
   };
 });
