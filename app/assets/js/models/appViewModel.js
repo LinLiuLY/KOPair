@@ -3,7 +3,7 @@
 /* global define:true*/
 define(['jquery',
     'knockout',
-    'underscore'
+    'underscore',
     '../../../assets/js/models/sammyViewModel.js',
     '../../../assets/js/models/person.js',
     'knockout.validation'
