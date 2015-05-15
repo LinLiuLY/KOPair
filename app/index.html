@@ -39,8 +39,29 @@
 
                 <!-- TOOL BODY -->
 
+                <div>
+                    <h5>please add member for pair switch</h5>
 
-                <h1>Write your code for tool of switch pair...</h1>
+                    <label>Name</label>
+                    <input data-bind="value: name">
+
+                    <label>Tyro</label>
+                    <input type="checkbox" data-bind="checked: tyro">
+                    <button data-bind="click: addPerson">Add Member</button>
+                </div>
+
+                <div>
+                    <h5>members</h5>
+                    <ul data-bind="foreach: persons">
+                        <li>
+                            <span data-bind="text: $data"></span>
+                        </li>
+                    </ul>                    
+                </div>
+
+
+                
+                
 
 
                 <!-- TOOL END -->
