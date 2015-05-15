@@ -42,13 +42,14 @@
                     <label>Tyro</label>
                     <input type="checkbox" data-bind="checked: tyro">
                     <button data-bind="click: $parent.addPerson">Add Member</button>
+                    <p class="help-block" data-bind="validationMessage: name"></p>
                 </div>
                 <div>
                     <h5>members</h5>
                     <ul data-bind="foreach: personsList">
                         <li>
                             <span data-bind="text: name"></span>
-                            <span data-bind="text: tyro"></span>
+                            <span data-bind="text: fullName"></span>
                             <button data-bind="click: $parent.removePerson"></button>
                         </li>
                     </ul>                    

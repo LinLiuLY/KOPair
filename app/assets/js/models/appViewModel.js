@@ -35,12 +35,10 @@ define(['jquery',
     };
 
     self.removePerson = function(person) {
-      var name = ko.unwrap(person.name);
-      self.personsList.remove(findPersonByName(name));
+      self.personsList.remove(person);
     }
 
     function findPersonByName(name) {
-
       var existPerson =  _.find(ko.unwrap(self.personsList), 
         function(person) { 
           return ko.unwrap(person.name) == name; 
@@ -48,6 +46,8 @@ define(['jquery',
 
       return existPerson;
     }
+
+
 
   };
 });
