@@ -9,7 +9,8 @@ require.config({
     'bootbox': '../../bower_components/bootbox/bootbox',
     'notify': '../../bower_components/notifyjs-dist/notify',
     'notify-bootstrap': '../../bower_components/notifyjs-dist/styles/bootstrap/notify-bootstrap',
-    'jquery.bootstrap': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap'
+    'jquery.bootstrap': '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap',
+    'underscore':'../../bower_components/underscore/underscore'
   },
   shim: {
     'jquery.bootstrap': {
