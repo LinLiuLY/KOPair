@@ -35,39 +35,24 @@
         </div>
         <div class="container">
             <div id="home" style="display:none;" data-bind="visible: sammy.chosenFolderId()==='home'">
-
-
-                <!-- TOOL BODY -->
-
                 <div data-bind="with: person">
                     <h5>please add member for pair switch</h5>
-
                     <label>Name</label>
                     <input data-bind="value: name">
-
                     <label>Tyro</label>
                     <input type="checkbox" data-bind="checked: tyro">
                     <button data-bind="click: $parent.addPerson">Add Member</button>
                 </div>
-
                 <div>
                     <h5>members</h5>
                     <ul data-bind="foreach: personsList">
                         <li>
                             <span data-bind="text: name"></span>
                             <span data-bind="text: tyro"></span>
+                            <button data-bind="click: $parent.removePerson"></button>
                         </li>
                     </ul>                    
                 </div>
-
-
-                
-                
-
-
-                <!-- TOOL END -->
-
-
             </div>
             <div id="about" style="display:none;" data-bind="visible: sammy.chosenFolderId()==='about'">
                 <div class="row">

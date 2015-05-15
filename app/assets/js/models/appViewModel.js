@@ -25,16 +25,21 @@ define(['jquery',
     self.person = new Person('', false);
     self.personsList = ko.observableArray([]);
 
-    self.addPerson = function(newPerson) {
-      var name = ko.unwrap(newPerson.name);
-      var tyro = ko.unwrap(newPerson.tyro);
-      
-      if(!checkExist(name)) {
+    self.addPerson = function(person) {
+      var name = ko.unwrap(person.name);
+      var tyro = ko.unwrap(person.tyro);
+
+      if(!findPersonByName(name) && name != '') {
         self.personsList.push(new Person(name,tyro));
       }
     };
 
-    function checkExist(name) {
+    self.removePerson = function(person) {
+      var name = ko.unwrap(person.name);
+      self.personsList.remove(findPersonByName(name));
+    }
+
+    function findPersonByName(name) {
 
       var existPerson =  _.find(ko.unwrap(self.personsList), 
         function(person) { 
