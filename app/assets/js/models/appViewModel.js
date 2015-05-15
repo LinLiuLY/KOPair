@@ -28,8 +28,21 @@ define(['jquery',
     self.addPerson = function(newPerson) {
       var name = ko.unwrap(newPerson.name);
       var tyro = ko.unwrap(newPerson.tyro);
-      self.personsList.push(new Person(name,tyro));
+      
+      if(!checkExist(name)) {
+        self.personsList.push(new Person(name,tyro));
+      }
     };
+
+    function checkExist(name) {
+
+      var existPerson =  _.find(ko.unwrap(self.personsList), 
+        function(person) { 
+          return ko.unwrap(person.name) == name; 
+        });
+
+      return existPerson;
+    }
 
   };
 });
