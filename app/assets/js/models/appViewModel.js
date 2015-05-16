@@ -28,14 +28,33 @@ define(['jquery',
     self.addPerson = function(person) {
       var name = ko.unwrap(person.name);
       var tyro = ko.unwrap(person.tyro);
+      var searchedPerson = findPersonByName(name);
 
-      if(!findPersonByName(name) && name != '') {
+      if(!searchedPerson && name != '') {
         self.personsList.push(new Person(name,tyro));
-      }
+      } 
     };
 
     self.removePerson = function(person) {
       self.personsList.remove(person);
+    }
+
+    self.editPerson = function(person) {
+      var name = ko.unwrap(person.name);
+      var tyro = ko.unwrap(person.tyro);
+
+      self.person.name(name);
+      self.person.tyro(tyro);
+      person.status(true);
+    }
+
+    self.updatePerson = function(person) {
+      var name = ko.unwrap(person.name);
+      var tyro = ko.unwrap(person.tyro);
+      var searchedPerson = findPersonByStatus();
+      searchedPerson.name(name);
+      searchedPerson.tyro(tyro);
+
     }
 
     function findPersonByName(name) {
@@ -47,6 +66,14 @@ define(['jquery',
       return existPerson;
     }
 
+    function findPersonByStatus() {
+      var existPerson =  _.find(ko.unwrap(self.personsList), 
+        function(person) { 
+          return ko.unwrap(person.status) == true; 
+        });
+
+      return existPerson;
+    }
 
 
   };

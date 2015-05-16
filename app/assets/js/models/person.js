@@ -10,6 +10,7 @@ define(['jquery',
 
     self.name = ko.observable(name);
     self.tyro = ko.observable(tyro);
+    self.status = ko.observable(false);
 
     self.fullName = ko.computed(function(){
     	return ko.unwrap(self.tyro) ? '(tyro)' : '';;
