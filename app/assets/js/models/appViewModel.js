@@ -29,6 +29,7 @@ define(['jquery',
       var name = ko.unwrap(person.name);
       var tyro = ko.unwrap(person.tyro);
       var searchedPerson = findPersonByName(name);
+      self.person.status(false);
 
       if(!searchedPerson && name != '') {
         self.personsList.push(new Person(name,tyro));
@@ -44,7 +45,8 @@ define(['jquery',
       var tyro = ko.unwrap(person.tyro);
       self.person.name(name);
       self.person.tyro(tyro);
-      setPersonStatus(name)
+      setPersonStatus(name);
+      self.person.status(true);
     }
 
     self.updatePerson = function(person) {
@@ -62,9 +64,7 @@ define(['jquery',
         } else {
           person.status = false;
         }
-
       });
-
     }
 
     function findPersonByName(name) {

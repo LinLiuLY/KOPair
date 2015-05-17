@@ -42,17 +42,18 @@
                     <label>Tyro</label>
                     <input type="checkbox" data-bind="checked: tyro">
                     <button data-bind="click: $parent.addPerson">Add Member</button>
-                    <button data-bind="click: $parent.updatePerson">Edit Member</button>
+                    <button data-bind="click: $parent.updatePerson, visible: status">Edit Member</button>
                     <p class="help-block" data-bind="validationMessage: name"></p>
                 </div>
                 <div>
                     <h5>members</h5>
                     <ul data-bind="foreach: personsList">
                         <li>
-                            <span data-bind="text: name"></span>
-                            <span data-bind="text: fullName"></span>
+                            <a data-bind="click: $parent.editPerson">
+                                <span data-bind="text: name"></span>
+                                <span data-bind="text: fullName"></span>
+                            </a>
                             <button data-bind="click: $parent.removePerson">removePerson</button>
-                            <button data-bind="click: $parent.editPerson">editPerson</button>
                         </li>
                     </ul>                    
                 </div>
