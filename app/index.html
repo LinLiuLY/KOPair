@@ -35,20 +35,36 @@
         </div>
         <div class="container">
             <div id="home" style="display:none;" data-bind="visible: sammy.chosenFolderId()==='home'">
-                <div data-bind="with: person">
+                <div class="form-horizontal" data-bind="with: person">
                     <h5>please add member for pair switch</h5>
-                    <label>Name</label>
-                    <input data-bind="value: name">
-                    <label>Tyro</label>
-                    <input type="checkbox" data-bind="checked: tyro">
-                    <!-- ko if: !ko.unwrap(status)-->
-                    <button data-bind="click: $parent.addPerson">Add Member</button>
-                    <!-- /ko -->
-                    <!-- ko if: status-->
-                    <button data-bind="click: $parent.updatePerson, visible: status">Edit Member</button>
-                    <!-- /ko -->
-                    <p class="help-block" data-bind="validationMessage: name"></p>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" placeholder="Name" data-bind="value: name">
+                        </div>
+                        <p class="help-block" data-bind="validationMessage: name"></p>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: tyro">Tyro
+                                </label>    
+                            </div>
+                        </div>    
+                    </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <!-- ko if: !ko.unwrap(status)-->
+                            <button type="submit" class="btn btn-default" data-bind="click: $parent.addPerson">Add Member</button>
+                            <!-- /ko -->
+                            <!-- ko if: ko.unwrap(status)-->
+                            <button type="submit" class="btn btn-default" data-bind="click: $parent.updatePerson">Save</button>
+                            <!-- /ko -->
+                        </div>
+                      </div>
                 </div>
+                
                 <div>
                     <h5>members</h5>
                     <ul data-bind="foreach: personsList">
