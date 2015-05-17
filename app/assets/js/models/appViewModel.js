@@ -42,10 +42,9 @@ define(['jquery',
     self.editPerson = function(person) {
       var name = ko.unwrap(person.name);
       var tyro = ko.unwrap(person.tyro);
-
       self.person.name(name);
       self.person.tyro(tyro);
-      person.status(true);
+      setPersonStatus(name)
     }
 
     self.updatePerson = function(person) {
@@ -54,6 +53,17 @@ define(['jquery',
       var searchedPerson = findPersonByStatus();
       searchedPerson.name(name);
       searchedPerson.tyro(tyro);
+    }
+
+    function setPersonStatus(name) {
+      _.each(ko.unwrap(self.personsList), function(person) {
+        if(ko.unwrap(person.name) == name ){
+          person.status = true;
+        } else {
+          person.status = false;
+        }
+
+      });
 
     }
 
