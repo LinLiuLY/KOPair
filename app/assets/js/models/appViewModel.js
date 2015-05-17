@@ -55,6 +55,7 @@ define(['jquery',
       var searchedPerson = findPersonByStatus();
       searchedPerson.name(name);
       searchedPerson.tyro(tyro);
+      self.person.status(false);
     }
 
     function setPersonStatus(name) {
