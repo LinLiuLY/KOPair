@@ -41,8 +41,12 @@
                     <input data-bind="value: name">
                     <label>Tyro</label>
                     <input type="checkbox" data-bind="checked: tyro">
+                    <!-- ko if: !ko.unwrap(status)-->
                     <button data-bind="click: $parent.addPerson">Add Member</button>
+                    <!-- /ko -->
+                    <!-- ko if: status-->
                     <button data-bind="click: $parent.updatePerson, visible: status">Edit Member</button>
+                    <!-- /ko -->
                     <p class="help-block" data-bind="validationMessage: name"></p>
                 </div>
                 <div>
