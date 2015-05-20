@@ -50,6 +50,8 @@ define(['jquery',
       var searchedPerson = findPersonById(ko.unwrap(person.id));
       searchedPerson.name(ko.unwrap(person.name));
       searchedPerson.tyro(ko.unwrap(person.tyro));
+
+      self.person.id(0);
     }
 
     function findPersonByName(name) {
