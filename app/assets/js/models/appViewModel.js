@@ -22,17 +22,17 @@ define(['jquery',
 
     self.sammy = new SammyViewModel();
 
-    self.person = new Person('', false);
+    self.person = new Person('', false,0);
     self.personsList = ko.observableArray([]);
 
     self.addPerson = function(person) {
       var name = ko.unwrap(person.name);
       var tyro = ko.unwrap(person.tyro);
+
       var searchedPerson = findPersonByName(name);
-      self.person.status(false);
 
       if(!searchedPerson && name != '') {
-        self.personsList.push(new Person(name,tyro));
+        self.personsList.push(new Person(name,tyro,Date.now()));
       } 
     };
 
@@ -41,31 +41,15 @@ define(['jquery',
     }
 
     self.editPerson = function(person) {
-      var name = ko.unwrap(person.name);
-      var tyro = ko.unwrap(person.tyro);
-      self.person.name(name);
-      self.person.tyro(tyro);
-      setPersonStatus(name);
-      self.person.status(true);
+      self.person.name(ko.unwrap(person.name));
+      self.person.tyro(ko.unwrap(person.tyro));
+      self.person.id(ko.unwrap(person.id));
     }
 
     self.updatePerson = function(person) {
-      var name = ko.unwrap(person.name);
-      var tyro = ko.unwrap(person.tyro);
-      var searchedPerson = findPersonByStatus();
-      searchedPerson.name(name);
-      searchedPerson.tyro(tyro);
-      self.person.status(false);
-    }
-
-    function setPersonStatus(name) {
-      _.each(ko.unwrap(self.personsList), function(person) {
-        if(ko.unwrap(person.name) == name ){
-          person.status = true;
-        } else {
-          person.status = false;
-        }
-      });
+      var searchedPerson = findPersonById(ko.unwrap(person.id));
+      searchedPerson.name(ko.unwrap(person.name));
+      searchedPerson.tyro(ko.unwrap(person.tyro));
     }
 
     function findPersonByName(name) {
@@ -77,15 +61,13 @@ define(['jquery',
       return existPerson;
     }
 
-    function findPersonByStatus() {
+    function findPersonById(id) {
       var existPerson =  _.find(ko.unwrap(self.personsList), 
         function(person) { 
-          return ko.unwrap(person.status) == true; 
+          return ko.unwrap(person.id) == id; 
         });
 
       return existPerson;
     }
-
-
   };
 });

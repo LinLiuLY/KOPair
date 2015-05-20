@@ -5,12 +5,12 @@ define(['jquery',
     'knockout',
     'knockout.validation'
     ], function ($, ko) {
-  return function (name,tyro) {
+  return function (name,tyro,id) {
     var self = this;
 
     self.name = ko.observable(name);
     self.tyro = ko.observable(tyro);
-    self.status = ko.observable(false);
+    self.id = ko.observable(id);
 
     self.fullName = ko.computed(function(){
     	return ko.unwrap(self.tyro) ? '(tyro)' : '';;
