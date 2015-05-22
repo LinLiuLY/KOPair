@@ -74,7 +74,7 @@
                                                 <span data-bind="text: name"></span>
                                                 <span data-bind="text: fullName"></span>
                                             </a>
-                                            <button data-bind="click: $parent.removePerson">
+                                            <button class="btn btn-default" data-bind="click: $parent.removePerson">
                                                 remove
                                             </button>
                                         </li>
@@ -85,6 +85,18 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-6 control-label">Click the button to switch pair</label>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-default">Switch</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <ul class="list-group">
+                                    <li class="list-group-item">123</li>
+                                    <li class="list-group-item">456</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
