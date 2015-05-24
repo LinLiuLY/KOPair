@@ -88,8 +88,16 @@ define(['jquery',
       var pairListLength = Math.round((sortListByTyro.length)/2);
 
       for(var i = 0, j = sortListByTyro.length-1; i < pairListLength ; i++,j--){
-        var arr = [ko.unwrap(sortListByTyro[i].name),ko.unwrap(sortListByTyro[j].name)];
-        pairList.push(arr.join(' - '));
+        var noTyroName = ko.unwrap(sortListByTyro[i].name);
+        var tyroName = ko.unwrap(sortListByTyro[j].name);
+        var nameList = [noTyroName,tyroName];
+
+        if(noTyroName == tyroName) {
+          pairList.push(noTyroName);  
+        } else {
+          pairList.push(nameList.join(' - '));
+        }
+        
       }
 
       self.pairList(pairList);
