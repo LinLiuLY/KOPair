@@ -88,13 +88,14 @@
                             <div class="form-group">
                                 <label class="col-sm-6 control-label">Click the button to switch pair</label>
                                 <div class="col-sm-6">
-                                    <button class="btn btn-default">Switch</button>
+                                    <button class="btn btn-default" data-bind="click: pairSwitch">Switch</button>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <ul class="list-group">
-                                    <li class="list-group-item">123</li>
-                                    <li class="list-group-item">456</li>
+                                <ul class="list-group col-sm-6" data-bind="foreach: pairList">
+                                    <li class="list-group-item">
+                                        <label data-bind="text: $data"></label>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

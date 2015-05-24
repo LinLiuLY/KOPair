@@ -21,9 +21,12 @@ define(['jquery',
     });
 
     self.sammy = new SammyViewModel();
-
     self.person = new Person('', false,0);
     self.personsList = ko.observableArray([]);
+
+    self.pairList = ko.observableArray([]);
+
+    self.pairSwitch = pairSwitch;
 
     self.addPerson = function(person) {
       var name = ko.unwrap(person.name);
@@ -71,5 +74,26 @@ define(['jquery',
 
       return existPerson;
     }
+
+    function getPersonByTyro(value) {
+      return _.filter(ko.unwrap(self.personsList),function(item){ return ko.unwrap(item.tyro) == value});
+    }
+
+    function pairSwitch() {
+      var sortListByTyro = _.sortBy(ko.unwrap(self.personsList),function(item){
+        return ko.unwrap(item.tyro);
+      });
+
+      var pairList = [];
+      var pairListLength = Math.round((sortListByTyro.length)/2);
+
+      for(var i = 0, j = sortListByTyro.length-1; i < pairListLength ; i++,j--){
+        var arr = [ko.unwrap(sortListByTyro[i].name),ko.unwrap(sortListByTyro[j].name)];
+        pairList.push(arr.join(' - '));
+      }
+
+      self.pairList(pairList);
+    }
+
   };
 });
