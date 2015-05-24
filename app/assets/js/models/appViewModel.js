@@ -26,7 +26,9 @@ define(['jquery',
 
     self.pairList = ko.observableArray([]);
 
-    self.pairSwitch = pairSwitch;
+    self.pairSwitch = ko.computed(function(){
+      self.pairList(pairSwitch());
+    });
 
     self.addPerson = function(person) {
       var name = ko.unwrap(person.name);
@@ -91,16 +93,14 @@ define(['jquery',
         var noTyroName = ko.unwrap(sortListByTyro[i].name);
         var tyroName = ko.unwrap(sortListByTyro[j].name);
         var nameList = [noTyroName,tyroName];
-
         if(noTyroName == tyroName) {
           pairList.push(noTyroName);  
         } else {
           pairList.push(nameList.join(' - '));
         }
-        
       }
-
-      self.pairList(pairList);
+      
+      return pairList;
     }
 
   };
